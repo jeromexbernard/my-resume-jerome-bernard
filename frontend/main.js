@@ -6,7 +6,7 @@ window.addEventListener('DOMContentLoaded', (event)=> {
  async function updateVisitorCount() {
 
     try{
-        const response = await fetch ('http://localhost:7071/api/GetResumeCounter', {method: 'POST'});
+        const response = await fetch ('https://getresumecounterjb.azurewebsites.net/api/http_trigger?code=6gtrd74yTvMFaeaEBGdQpf-l62RcY2TZEH7N4xUsZ7gAAzFu_GFgVA==', {method: 'POST'});
         const data = await response.json();
         
         var countValue = data.count;
@@ -24,7 +24,7 @@ window.addEventListener('DOMContentLoaded', (event)=> {
 async function getVisitorCount() {
 
     try{
-        const response = await fetch ('http://localhost:7071/api/GetResumeCounter', {method: 'GET'});
+        const response = await fetch ('https://getresumecounterjb.azurewebsites.net/api/http_trigger?code=6gtrd74yTvMFaeaEBGdQpf-l62RcY2TZEH7N4xUsZ7gAAzFu_GFgVA==', {method: 'GET'});
         const data = await response.json();
         var countValue = data.count;
         
