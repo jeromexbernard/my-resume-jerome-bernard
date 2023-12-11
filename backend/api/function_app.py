@@ -13,10 +13,15 @@ if os.environ.get("AzureWebJobsScriptRoot"):
     connection_string_URI = os.environ["AzureResumeConnectionStringURI"]
 else:
     # Running locally, use local.settings.json
-    with open("local.settings.json", "r") as settings_file:
-        settings = json.load(settings_file)
-        connection_string_PriKey = settings["Values"]["ResourceTokenKey"]
-        connection_string_URI = settings["Values"]["AzureResumeConnectionStringURI"]
+    try:
+        with open("local.settings.json", "r") as settings_file:
+            settings = json.load(settings_file)
+            connection_string_PriKey = settings["Values"]["ResourceTokenKey"]
+            connection_string_URI = settings["Values"]["AzureResumeConnectionStringURI"]
+    except FileNotFoundError:
+        # Default values for testing purposes
+        connection_string_PriKey = "mocked_token_key"
+        connection_string_URI = "mocked_connection_uri"
 
 # Set the database and container names
 database_name = "AzureResume"
